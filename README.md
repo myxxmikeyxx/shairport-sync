@@ -42,6 +42,7 @@ What else?
 * An [MPRIS](https://specifications.freedesktop.org/mpris-spec/2.2/) interface, partially complete and very functional, including access to metadata and artwork, and some limited remote control.
 * An interface to [MQTT](https://en.wikipedia.org/wiki/MQTT), an often-used protocol in home automation projects.
 * A native D-Bus interface, including access to metadata and artwork, some limited remote control and some system settings.
+* Digital Signal Processing facilities -- please see the [DSP Wiki Page Guide](https://github.com/mikebrady/shairport-sync/wiki/Digital-Signal-Processing-with-Shairport-Sync). (Thanks to [Yann Pomarède](https://github.com/yannpom) for the code and to [Paul Wieland](https://github.com/PaulWieland) for the guide.)
 
 Heritage
 -------
@@ -71,6 +72,8 @@ Shairport Sync may already be available as a package in your Linux distribution 
 
 **Debian:** shairport-sync is in the Debian archive.
 
+**Ansible Playbooks for CentOS 8 Stream on Raspberry Pi:** A suite of Ansible playbooks and scripts to make deploying Shairport Sync easy on CentOS 8 Stream specifically on Raspberry Pi is available at https://github.com/p3ck/ansible-shairport.
+
 **OpenWrt:** There is a Shairport Sync package in OpenWrt trunk. Also, there's an OpenWrt package at https://github.com/mikebrady/shairport-sync-for-openwrt, including one that builds back to Barrier Breaker.
 
 **Arch Linux:** Shairport Sync is available for x86_64 and i686 platforms in the Arch Linux Community Repository -- search for `shairport-sync`. See also https://www.archlinux.org/packages/.
@@ -85,6 +88,8 @@ Note that the installation uses the libao library and so synchronisation is not 
 
 **Fedora:** Please see the guide at [FEDORA.md](https://github.com/mikebrady/shairport-sync/blob/master/FEDORA.md).
 
+**Gentoo:** Shairport Sync is available in griffon_overlay, please see the guide at [https://github.com/windfail/griffon_overlay/wiki/shairport-sync](https://github.com/windfail/griffon_overlay/wiki/shairport-sync).
+
 **Cygwin:** Please see the guide at [CYGWIN.md](https://github.com/mikebrady/shairport-sync/blob/master/CYGWIN.md).
 
 Sincere thanks to all package contributors!
@@ -95,7 +100,7 @@ If you wish to build and install the latest version of Shairport Sync on Debian,
 
 You should check to see if `shairport-sync` is already installed – you can use the command `$ which shairport-sync` to find where it is located, if installed. If it is installed you should delete it – you may need superuser privileges. After deleting, check again in case further copies are installed elsewhere.
 
-You should also remove the startup script files `/etc/systemd/system/shairport-sync.service`, `/lib/systemd/system/shairport-sync.service` and `/etc/init.d/shairport-sync` if they exist – new ones will be installed in necessary.
+You should also remove the startup script and service definition files `/etc/systemd/system/shairport-sync.service`, `/lib/systemd/system/shairport-sync.service`, `/etc/init.d/shairport-sync`, `/etc/dbus-1/system.d/shairport-sync-dbus.conf` and `/etc/dbus-1/system.d/shairport-sync-mpris.conf` if they exist – new ones will be installed if necessary.
 
 If you removed any installations of Shairport Sync or any of its startup script files, you should reboot.
 
@@ -629,3 +634,12 @@ If you are using WiFi, you should ensure that WiFi power management is off. See 
 Troubleshooting
 ---------------
 Please refer to [TROUBLESHOOTING](https://github.com/mikebrady/shairport-sync/blob/master/TROUBLESHOOTING.md) for a few hints, contributed by users.
+
+MQTT
+---------------
+Please refer to the [MQTT INFO](https://github.com/mikebrady/shairport-sync/blob/master/MQTT.md) page for additional info on building, configuring and using MQTT to interface shairport-sync with common home automation systems (contributed by users).
+
+Packaging status
+----------------
+
+[![Packaging status](https://repology.org/badge/vertical-allrepos/shairport-sync.svg)](https://repology.org/project/shairport-sync/versions)
